@@ -31,9 +31,9 @@ public class RewardPointsUtil {
         }
 
         // groups transactions by customerID
-        final Map<String, List<Map<String, Object>>> resultsCustomerIDGrouping =
+        final Map<Integer, List<Map<String, Object>>> resultsCustomerIDGrouping =
                 transactions.stream().collect(
-                        Collectors.groupingBy(map -> map.get(RewardPointsConsts.CUSTOMER_ID).toString(),
+                        Collectors.groupingBy(map -> (Integer)map.get(RewardPointsConsts.CUSTOMER_ID),
                         Collectors.toList()));
 
         // group customer transactions by transactionDate MONTH and sum all reward points for that month.
